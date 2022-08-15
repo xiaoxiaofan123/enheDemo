@@ -1,5 +1,6 @@
 ## How to run
 `npm install` and `npm run start`
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 ## Instructions for use
 * you can hover the node and edge to view the detail info
 * you can click the node and edge to edit the info
