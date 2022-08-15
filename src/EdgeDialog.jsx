@@ -7,8 +7,6 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 
 export default function EdgeDialog({ open = false, onChange, data }) {
-  //   const [open, setOpen] = React.useState(false);
-  //   useEffect(() => {}, [showFlag]);
   const amountInput = useRef();
   const unitInput = useRef();
 
@@ -27,10 +25,6 @@ export default function EdgeDialog({ open = false, onChange, data }) {
     <Dialog open={open} onClose={handleClose}>
       <DialogTitle>Edit container info</DialogTitle>
       <DialogContent>
-        {/* <DialogContentText>
-            To subscribe to this website, please enter your email address here.
-            We will send updates occasionally.
-          </DialogContentText> */}
         <TextField
           inputRef={amountInput}
           label="Amount transferred"

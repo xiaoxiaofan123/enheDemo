@@ -9,27 +9,6 @@ import NodeTooltip from './NodeTooltip'
 import EdgeTooltip from './EdgeTooltip'
 import './node.css'
 
-// const data = {
-//   // 点集
-//   nodes: [
-//     {
-//       id: "node1",
-//       name: 'aaa'
-//     },
-//     {
-//       id: "node2",
-//     }
-//   ],
-//   // 边集
-//   edges: [
-//     {
-//       source: "node1",
-//       target: "node2",
-//       name: 'b'
-//     }
-//   ]
-// };
-
 const transfer = (list) => {
   return {
     nodes: list[0].cotainers.map(item => ({ ...item, id: `${item.id}` })),
@@ -44,14 +23,14 @@ const App = () => {
   let graph = null
   const graphRef = useRef(graph)
 
-  // 节点tooltip坐标
+  // node tooltip坐标
   const [showNodeTooltip, setShowNodeTooltip] = useState(false)
   const [nodeTooltip, setNodeToolTip] = useState(null)
 
   const [nodeOpen, setNodeOpen] = useState(false)
   const [editData, setEditData] = useState(null)
 
-  // 边tooltip坐标
+  // edge tooltip
   const [showEdgeTooltip, setShowEdgeTooltip] = useState(false)
   const [edgeTooltip, setEdgeToolTip] = useState(null)
 
@@ -70,7 +49,7 @@ const App = () => {
       setNodeToolTip({ x: point.x + 25, y: point.y - 10, data: model })
       setShowNodeTooltip(true)
     })
-    // 节点上面触发mouseleave事件后隐藏tooltip和ContextMenu
+
     graph.on('node:mouseleave', () => {
       setShowNodeTooltip(false)
     })
@@ -105,15 +84,6 @@ const App = () => {
     graph.on('edge:mouseleave', () => {
       setShowEdgeTooltip(false)
     })
-
-    // 监听节点上面右键菜单事件
-    graph.on('node:contextmenu', evt => {
-      const { item } = evt
-      const model = item.getModel()
-      const { x, y } = model
-      console.log(model)
-      const point = graph.getCanvasByPoint(x, y)
-    })
   }
 
   const handleNodeChange = (formData) => {
@@ -121,7 +91,6 @@ const App = () => {
     if (!formData) return
     const i = data.nodes.findIndex(item => item.id === editData.id)
     data.nodes[i] = { ...data.nodes[i], ...formData }
-    // graph.changeData(data);
     graphRef.current.changeData(data)
   }
 
@@ -175,6 +144,7 @@ const App = () => {
     });
     graph.data(data);
     graph.render();
+    graph.zoomTo(0.5);
     graphRef.current = graph
     bindEvents()
   }, []);

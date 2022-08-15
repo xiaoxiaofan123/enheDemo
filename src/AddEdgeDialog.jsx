@@ -13,9 +13,6 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 
 export default function AddEdge({ open = false, onChange, options }) {
-  //   const [open, setOpen] = React.useState(false);
-  //   useEffect(() => {}, [showFlag]);
-  const nameInput = useRef();
   const [source, setSource] = useState();
   const [target, setTarget] = useState();
 
@@ -55,10 +52,8 @@ export default function AddEdge({ open = false, onChange, options }) {
               labelId="source-dialog-select-label"
               id="source-dialog-select"
               value={source}
-              //   label="Source"
               onChange={handleSourceChange}
               input={<OutlinedInput label="Source" />}
-              //   fullWidth
             >
               {options.map((item) => (
                 <MenuItem key={item.id} value={item.id}>
@@ -73,10 +68,8 @@ export default function AddEdge({ open = false, onChange, options }) {
               labelId="target-dialog-select-label"
               id="target-dialog-select"
               value={target}
-              //   label="Source"
               onChange={handleTargetChange}
               input={<OutlinedInput label="Target" />}
-              //   fullWidth
             >
               {options.map((item) => (
                 <MenuItem key={item.id} value={item.id}>
